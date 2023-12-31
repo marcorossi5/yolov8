@@ -25,4 +25,4 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--dataset", type=Path, required=True, help="dataset folder path")
     parser.add_argument("-e", "--epochs", type=int, default=None, help="number of epochs to finetune the model")
     args = parser.parse_args()
-    main(args.dataset, args.epochs)
+    main(args.dataset.absolute(), args.epochs)
