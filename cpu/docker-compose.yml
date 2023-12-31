@@ -12,6 +12,7 @@ services:
     volumes:
       - ../ui:/home/ai/ui
       - ../ui:/home/ui
+      - ../yolo:/home/yolo
     ports:
       - 8010:8000
     container_name: yolov8-cpu
