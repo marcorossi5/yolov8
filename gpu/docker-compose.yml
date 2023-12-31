@@ -10,7 +10,6 @@ services:
       args:
         PYPROJECT_FILE: ./requirements/gpu/pyproject.toml
     volumes:
-      - ./ui:/home/ai/ui
       - ./ui:/home/ui
       - ../yolo:/home/yolo
     ports:

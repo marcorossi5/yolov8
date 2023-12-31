@@ -15,7 +15,7 @@ RUN python3 -m venv $VENV
 ENV PATH="${VENV}/bin:${PATH}"
 
 # install poetry
-RUN apt update && apt upgrade -y && install -y \
+RUN apt update && apt upgrade -y && apt install -y \
     ffmpeg \
     libsm6 \
     libxext6
@@ -36,7 +36,7 @@ RUN poetry install --no-interaction --no-root -C /tmp
 
 FROM python:3.10-slim as prod
 
-WORKDIR /home/ai
+WORKDIR /home
 
 # copy lib files
 COPY --from=builder /opt/venv /opt/venv

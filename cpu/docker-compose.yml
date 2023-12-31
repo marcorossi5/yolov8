@@ -10,8 +10,7 @@ services:
       args:
         PYPROJECT_FILE: ./requirements/cpu/pyproject.toml
     volumes:
-      - ../ui:/home/ai/ui
-      - ../ui:/home/ui
+      - ./ui:/home/ui
       - ../yolo:/home/yolo
     ports:
       - 8010:8000
