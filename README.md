@@ -5,6 +5,10 @@ This repository contains a study on the YOLO v8 network introduced by Ultralytic
 For more information, check out the [GitHub](https://github.com/ultralytics/ultralytics)
 repository and the [documentation](https://docs.ultralytics.com).
 
+## Article
+
+Find a survey on the YOLO architectures at [arXive2304.00501](https://arxiv.org/abs/2304.00501).
+
 ## Quickstart
 
 ```bash
