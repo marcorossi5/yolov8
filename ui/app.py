@@ -6,17 +6,21 @@ from ultralytics import YOLO
 
 
 # config
-yolo_checkpoint = "yolo/models/yolov8n-seg.pt"
+options_to_yolo_checkpoint = {
+    "pretrained": "yolo/models/yolov8n-seg.pt",
+    "finetuned": "yolo/runs/detect/train/weights/best.pt"
+}
 
 st.set_page_config(layout="wide")
 
 st.session_state["image"] = None
 
+st.session_state["yolo_checkpoint"] = None
 st.session_state["yolo_model"] = None
 
 st.title("Object detection with YOLO v8")
 
-selection = st.radio("Aquire image : from", ["file", "camera"])
+device_selection = st.radio("Aquire image : from", ["file", "camera"])
 
 
 def save_img_in_memory(img: io.BytesIO):
@@ -40,7 +44,7 @@ def select_from_device():
 
 def load_yolo(force: bool = False):
     if st.session_state["yolo_model"] is None or force:
-        st.session_state["yolo_model"] = YOLO(yolo_checkpoint)
+        st.session_state["yolo_model"] = YOLO(st.session_state["yolo_checkpoint"])
 
 
 def detect_with_yolo(img):
@@ -53,7 +57,12 @@ def detect_with_yolo(img):
 
 col1, col2 = st.columns(2)
 with col1:
-    match selection:
+    selected_model = st.selectbox(
+        "Select model", options_to_yolo_checkpoint.keys()
+    )
+    st.session_state["yolo_checkpoint"] = options_to_yolo_checkpoint[selected_model]
+
+    match device_selection:
         case "file":
             select_from_file()
         case "camera":
