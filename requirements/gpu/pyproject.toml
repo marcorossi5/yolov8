@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "create-pyproject"
+version = "0.1.0"
+description = ""
+authors = ["Marco Rossi <rssmrc.11@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ultralytics = "^8.0.221"
+streamlit = "^1.29.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
